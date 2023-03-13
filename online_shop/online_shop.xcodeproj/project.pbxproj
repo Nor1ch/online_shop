@@ -23,12 +23,14 @@
 		05C1F04C29BF4C4300B26348 /* EmptyTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F04B29BF4C4300B26348 /* EmptyTransition.swift */; };
 		05C1F04E29BF4C4E00B26348 /* ModalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F04D29BF4C4E00B26348 /* ModalTransition.swift */; };
 		05C1F05029BF4C5900B26348 /* PushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F04F29BF4C5900B26348 /* PushTransition.swift */; };
-		05C1F05229BF524A00B26348 /* Consstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F05129BF524A00B26348 /* Consstants.swift */; };
+		05C1F05229BF524A00B26348 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F05129BF524A00B26348 /* Constants.swift */; };
 		05C1F05929BF558300B26348 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05C1F05829BF558300B26348 /* Montserrat-Bold.ttf */; };
 		05C1F05B29BF562A00B26348 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05C1F05A29BF562A00B26348 /* Montserrat-Medium.ttf */; };
 		05C1F05D29BF564F00B26348 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05C1F05C29BF564F00B26348 /* Montserrat-SemiBold.ttf */; };
 		05C1F05F29BF573900B26348 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05C1F05E29BF573900B26348 /* Poppins-Regular.ttf */; };
 		05C1F06129BF575C00B26348 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05C1F06029BF575C00B26348 /* Poppins-Medium.ttf */; };
+		05C1F06329BF663200B26348 /* CollectionViewCellLatest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F06229BF663200B26348 /* CollectionViewCellLatest.swift */; };
+		05C1F06529BF665900B26348 /* CollectionViewCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F06429BF665900B26348 /* CollectionViewCellHeader.swift */; };
 		CD6ED9213477479ECFCD98EF /* Pods_online_shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DBDD89BC21B802CF8704A7 /* Pods_online_shop.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,12 +54,14 @@
 		05C1F04B29BF4C4300B26348 /* EmptyTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTransition.swift; sourceTree = "<group>"; };
 		05C1F04D29BF4C4E00B26348 /* ModalTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTransition.swift; sourceTree = "<group>"; };
 		05C1F04F29BF4C5900B26348 /* PushTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTransition.swift; sourceTree = "<group>"; };
-		05C1F05129BF524A00B26348 /* Consstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consstants.swift; sourceTree = "<group>"; };
+		05C1F05129BF524A00B26348 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		05C1F05829BF558300B26348 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		05C1F05A29BF562A00B26348 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		05C1F05C29BF564F00B26348 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		05C1F05E29BF573900B26348 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		05C1F06029BF575C00B26348 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		05C1F06229BF663200B26348 /* CollectionViewCellLatest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellLatest.swift; sourceTree = "<group>"; };
+		05C1F06429BF665900B26348 /* CollectionViewCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellHeader.swift; sourceTree = "<group>"; };
 		A7C068DD135ABDC91041A20C /* Pods-online_shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-online_shop.debug.xcconfig"; path = "Target Support Files/Pods-online_shop/Pods-online_shop.debug.xcconfig"; sourceTree = "<group>"; };
 		EEAB9516A2E30590700174CF /* Pods-online_shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-online_shop.release.xcconfig"; path = "Target Support Files/Pods-online_shop/Pods-online_shop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +130,8 @@
 				05C1F04429BF4AF500B26348 /* MainVC.swift */,
 				05C1F04629BF4B0500B26348 /* MainViewModel.swift */,
 				05C1F04829BF4B7E00B26348 /* MainRoute.swift */,
+				05C1F06229BF663200B26348 /* CollectionViewCellLatest.swift */,
+				05C1F06429BF665900B26348 /* CollectionViewCellHeader.swift */,
 			);
 			path = MainVC;
 			sourceTree = "<group>";
@@ -136,7 +142,7 @@
 				05C1F05729BF54D200B26348 /* Fonts */,
 				05C1F03829BF49CF00B26348 /* Images.xcassets */,
 				05C1F03A29BF49DA00B26348 /* Colors.xcassets */,
-				05C1F05129BF524A00B26348 /* Consstants.swift */,
+				05C1F05129BF524A00B26348 /* Constants.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -352,13 +358,15 @@
 				05C1F04929BF4B7E00B26348 /* MainRoute.swift in Sources */,
 				05C1F04C29BF4C4300B26348 /* EmptyTransition.swift in Sources */,
 				05C1F04E29BF4C4E00B26348 /* ModalTransition.swift in Sources */,
+				05C1F06529BF665900B26348 /* CollectionViewCellHeader.swift in Sources */,
 				05C1F02629BF488500B26348 /* ViewController.swift in Sources */,
 				05C1F02229BF488500B26348 /* AppDelegate.swift in Sources */,
 				05C1F03F29BF4A6700B26348 /* RouterProtocol.swift in Sources */,
 				05C1F02429BF488500B26348 /* SceneDelegate.swift in Sources */,
 				05C1F04329BF4AC600B26348 /* MainRouter.swift in Sources */,
 				05C1F04529BF4AF500B26348 /* MainVC.swift in Sources */,
-				05C1F05229BF524A00B26348 /* Consstants.swift in Sources */,
+				05C1F06329BF663200B26348 /* CollectionViewCellLatest.swift in Sources */,
+				05C1F05229BF524A00B26348 /* Constants.swift in Sources */,
 				05C1F05029BF4C5900B26348 /* PushTransition.swift in Sources */,
 				05C1F04729BF4B0500B26348 /* MainViewModel.swift in Sources */,
 			);

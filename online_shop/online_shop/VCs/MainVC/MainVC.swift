@@ -7,14 +7,16 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
-class MainVC: UIViewController {
+class MainVC: UICollectionViewController {
     
     private let viewModel: MainViewModel
     
     init(viewModel: MainViewModel){
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+        let layout = UICollectionViewFlowLayout()
+        super.init(collectionViewLayout: layout)
     }
     
     required init?(coder: NSCoder) {
@@ -23,15 +25,27 @@ class MainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "HELLO"
-        view.backgroundColor = .yellow
+        setupViews()
+        makeConstraints()
     }
     
     private func setupViews(){
-        
+        view.backgroundColor = Constants.Color.background_white
+        collectionView.register(CollectionViewCellLatest.self, forCellWithReuseIdentifier: CollectionViewCellLatest.identifier)
+        collectionView.dataSource = self
+        title = "Trade by bata"
     }
     private func makeConstraints(){
         
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        5
+    }
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCellLatest.identifier, for: indexPath)
+        cell.backgroundColor = .red
+        return cell
     }
     
 }
