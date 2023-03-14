@@ -31,10 +31,49 @@ enum Constants {
         static var white: UIColor? {
             UIColor(named: "white")
         }
+        static var red: UIColor? {
+            UIColor(named: "red")
+        }
+        static var gray_category: UIColor? {
+            UIColor(named: "gray_category")
+        }
     }
     enum Font {
         static var navigationTitle: UIFont? {
             UIFont(name: "Montserrat-Bold", size: 20)
+        }
+        static var categoriesTitle8: UIFont? {
+            UIFont(name: "Poppins-Medium", size: 8)
+        }
+        
+        static var buttonHeader9: UIFont? {
+            UIFont(name: "Poppins-Medium", size: 9)
+        }
+        static var titleHeader15: UIFont? {
+            UIFont(name: "Poppins-Medium", size: 15)
+        }
+        
+        static var latestCategory6: UIFont? {
+            UIFont(name: "Poppins-SemiBold", size: 6)
+        }
+        static var latestTitle9: UIFont? {
+            UIFont(name: "Poppins-SemiBold", size: 9)
+        }
+        static var latestPrice7: UIFont? {
+            UIFont(name: "Poppins-SemiBold", size: 7)
+        }
+        
+        static var flashSaleTitle13: UIFont? {
+            UIFont(name: "Poppins-SemiBold", size: 13)
+        }
+        static var flashSalePrice10: UIFont? {
+            UIFont(name: "Poppins-SemiBold", size: 10)
+        }
+        static var flashSaleCategory9: UIFont? {
+            UIFont(name: "Poppins-SemiBold", size: 9)
+        }
+        static var flashSalePriceOff10: UIFont? {
+            UIFont(name: "Poppins-SemiBold", size: 10)
         }
     }
     enum Image {
@@ -70,6 +109,35 @@ enum Constants {
         }
         static var profile: UIImage? {
             UIImage(named: "profile")
+        }
+        
+        static var background: UIImage? {
+            UIImage(named: "backgroundtest")
+        }
+        static var background1: UIImage? {
+            UIImage(named: "backgroundtest-1")
+        }
+        static var background2: UIImage? {
+            UIImage(named: "backgroundtest-2")
+        }
+        static var background3: UIImage? {
+            UIImage(named: "backgroundtest-3")
+        }
+        static var background4: UIImage? {
+            UIImage(named: "backgroundtest-4")
+        }
+        
+        static var circle_plus: UIImage? {
+            UIImage(named: "circle_plus")
+        }
+        static var circle_fav: UIImage? {
+            UIImage(named: "circle_fav")
+        }
+        static var brand: UIImage? {
+            UIImage(named: "brand")
+        }
+        static var small_plus: UIImage? {
+            UIImage(named: "small_plus")
         }
         
     }
