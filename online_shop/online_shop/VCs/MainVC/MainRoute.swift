@@ -21,7 +21,7 @@ extension MainRoute where Self: Router {
         let navigation = UINavigationController(rootViewController: viewController)
         router.root = viewController
         navigation.tabBarItem = UITabBarItem(title: nil, image: Constants.Image.home, tag: 0)
-        navigation.tabBarItem.title = nil
+        navigation.tabBarItem.imageInsets = UIEdgeInsets(top: 10, left: 0, bottom: -10, right: 0)
         return navigation
     }
     func openMain(transition: Transition) {

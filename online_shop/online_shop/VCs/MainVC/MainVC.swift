@@ -17,9 +17,40 @@ class MainVC: UICollectionViewController {
     
     private lazy var searchBar: UITextField = {
         let view = UITextField()
-        view.borderStyle = .roundedRect
+        view.backgroundColor = Constants.Color.light_gray
+        view.textAlignment = .center
+        view.placeholder = "What are you looking for?"
+        view.textColor = Constants.Color.gray_textfield
+        view.font = Constants.Font.mainTextField
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        view.rightViewMode = .always
+        view.rightView = searchButton
         return view
     }()
+    private lazy var searchButton: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 24))
+        let button = UIButton()
+        button.frame = CGRect(x: -10, y: 0, width: 15, height: 24)
+        button.setImage(Constants.Image.lens, for: .normal)
+        view.addSubview(button)
+        return view
+    }()
+    
+    private lazy var navLabel: UILabel = {
+        let view = UILabel()
+        let attrString = NSMutableAttributedString(string: "Trade by ", attributes: [
+            .font: Constants.Font.navigationTitle as Any,
+            .foregroundColor: Constants.Color.black as Any
+        ])
+        attrString.append(NSMutableAttributedString(string: "bata", attributes: [
+            .font: Constants.Font.navigationTitle as Any,
+            .foregroundColor: Constants.Color.violet_button as Any
+        ]))
+        view.attributedText = attrString
+        return view
+    }()
+    
     init(viewModel: MainViewModel){
         self.viewModel = viewModel
         
@@ -46,15 +77,16 @@ class MainVC: UICollectionViewController {
         
         collectionView.backgroundColor = Constants.Color.background_white
         collectionView.dataSource = self
-        title = "Trade by bata"
         
+        navigationItem.titleView = navLabel
         view.addSubview(searchBar)
     }
     private func makeConstraints(){
         searchBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.left.equalToSuperview().offset(40)
-            make.right.equalToSuperview().inset(40)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(262)
+            make.height.equalTo(24)
         }
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom).offset(25)

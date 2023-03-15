@@ -17,6 +17,8 @@ struct Cells {
 
 class ProfileViewModel {
     
+    private let router: MainRouter
+    
     let cells: [Cells] = [
         Cells(title: "Trade store", balance: nil, push: true, image: Constants.Image.folder!),
         Cells(title: "Payment method", balance: nil, push: true, image: Constants.Image.folder!),
@@ -26,4 +28,8 @@ class ProfileViewModel {
         Cells(title: "Help", balance: nil, push: false, image: Constants.Image.help!),
         Cells(title: "Log out", balance: nil, push: false, image: Constants.Image.logout!)
     ]
+    
+    init(router: MainRouter){
+        self.router = router
+    }
 }

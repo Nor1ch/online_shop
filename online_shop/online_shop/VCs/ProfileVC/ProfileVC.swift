@@ -10,7 +10,15 @@ import UIKit
 import SnapKit
 
 class ProfileVC: UIViewController {
-    private let viewModel: ProfileViewModel = ProfileViewModel()
+    private let viewModel: ProfileViewModel
+    
+    init(viewModel: ProfileViewModel){
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var imageUserView: UIImageView = {
         let view = UIImageView()
@@ -118,7 +126,7 @@ class ProfileVC: UIViewController {
         tableView.snp.makeConstraints { make in
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.top.equalTo(uploadButton.snp.bottom).offset(10)
+            make.top.equalTo(uploadButton.snp.bottom).offset(5)
             make.bottom.equalToSuperview()
         }
     }

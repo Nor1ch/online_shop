@@ -58,6 +58,9 @@ enum Constants {
         static var titleHeader15: UIFont? {
             UIFont(name: "Poppins-Medium", size: 15)
         }
+        static var mainTextField: UIFont? {
+            UIFont(name: "Poppins-Regular", size: 9)
+        }
         
         static var latestCategory6: UIFont? {
             UIFont(name: "Poppins-SemiBold", size: 6)
@@ -205,5 +208,8 @@ enum Constants {
             UIImage(named: "vector")
         }
         
+        static var lens: UIImage? {
+            UIImage(named: "lens")
+        }
     }
 }
