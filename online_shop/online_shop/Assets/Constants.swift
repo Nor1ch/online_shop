@@ -37,6 +37,12 @@ enum Constants {
         static var gray_category: UIColor? {
             UIColor(named: "gray_category")
         }
+        static var gray_textfield: UIColor? {
+            UIColor(named: "gray_textfield")
+        }
+        static var violet_button: UIColor? {
+            UIColor(named: "violet_button")
+        }
     }
     enum Font {
         static var navigationTitle: UIFont? {
@@ -75,6 +81,36 @@ enum Constants {
         static var flashSalePriceOff10: UIFont? {
             UIFont(name: "Poppins-SemiBold", size: 10)
         }
+        
+        static var signinTitle26: UIFont? {
+            UIFont(name: "Montserrat-SemiBold", size: 26)
+        }
+        static var signinTextField11: UIFont? {
+            UIFont(name: "Montserrat-Medium", size: 11)
+        }
+        static var signinButton14: UIFont? {
+            UIFont(name: "Montserrat-Bold", size: 14)
+        }
+        static var signinText: UIFont? {
+            UIFont(name: "Montserrat-Medium", size: 10)
+        }
+        static var signinButtonsVIA12: UIFont? {
+            UIFont(name: "Montserrat-Medium", size: 12)
+        }
+        
+        static var profileName15: UIFont? {
+            UIFont(name: "Montserrat-Bold", size: 15)
+        }
+        static var profileButton14: UIFont? {
+            UIFont(name: "Montserrat-SemiBold", size: 14)
+        }
+        static var profileCell14: UIFont? {
+            UIFont(name: "Montserrat-Medium", size: 14)
+        }
+        static var profileChangeButton8: UIFont? {
+            UIFont(name: "Montserrat-Medium", size: 8)
+        }
+        
     }
     enum Image {
         static var cars: UIImage? {
@@ -138,6 +174,35 @@ enum Constants {
         }
         static var small_plus: UIImage? {
             UIImage(named: "small_plus")
+        }
+        
+        static var google: UIImage? {
+            UIImage(named: "google")
+        }
+        static var apple: UIImage? {
+            UIImage(named: "apple")
+        }
+        
+        static var folder: UIImage? {
+            UIImage(named: "folder")
+        }
+        static var help: UIImage? {
+            UIImage(named: "help")
+        }
+        static var logout: UIImage? {
+            UIImage(named: "logout")
+        }
+        static var profileimage: UIImage? {
+            UIImage(named: "profileimage")
+        }
+        static var recicle: UIImage? {
+            UIImage(named: "recicle")
+        }
+        static var upload: UIImage? {
+            UIImage(named: "upload")
+        }
+        static var vector: UIImage? {
+            UIImage(named: "vector")
         }
         
     }

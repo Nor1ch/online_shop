@@ -20,6 +20,8 @@ extension MainRoute where Self: Router {
         let viewController = MainVC(viewModel: viewModel)
         let navigation = UINavigationController(rootViewController: viewController)
         router.root = viewController
+        navigation.tabBarItem = UITabBarItem(title: nil, image: Constants.Image.home, tag: 0)
+        navigation.tabBarItem.title = nil
         return navigation
     }
     func openMain(transition: Transition) {
