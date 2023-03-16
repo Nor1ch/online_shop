@@ -16,7 +16,8 @@ extension TabbarRoute where Self: Router {
     func openTabbar(with transition: Transition){
         let router = MainRouter(rootTransition: EmptyTransition())
         let tabs = [router.makeMain(), router.makeFavorite(), router.makeCart(), router.makeMessage(), router.makeProfile()]
-        let tabBar = UITabBarController()
+//        let tabBar = UITabBarController()
+        let tabBar = TabbarVC()
         tabBar.tabBar.layer.cornerRadius = 20
         tabBar.tabBar.layer.masksToBounds = true
         tabBar.tabBar.backgroundColor = Constants.Color.white

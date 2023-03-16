@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 //        window = UIWindow(windowScene: scene)
 //        let router = MainRouter(rootTransition: EmptyTransition())
-//        window?.rootViewController = router.makeMain()
+//        window?.rootViewController = router.makeProfile()
 //        window?.makeKeyAndVisible()
         window = UIWindow(windowScene: scene)
         let router = MainRouter(rootTransition: EmptyTransition())

@@ -9,7 +9,7 @@ import Foundation
 
 class SigninViewModel {
     
-    typealias Routes = LoginRoute
+    typealias Routes = LoginRoute & TabbarRoute
     private let router: Routes
     
     init(router: Routes){
@@ -18,5 +18,8 @@ class SigninViewModel {
     
     func openLogin(){
         router.openLogin()
+    }
+    func openTabbar(){
+        router.openTabbar()
     }
 }

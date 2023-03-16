@@ -26,6 +26,7 @@ class ProfileVC: UIViewController {
         view.layer.borderWidth = 1
         view.layer.borderColor = Constants.Color.violet_button?.cgColor
         view.layer.cornerRadius = 30
+        view.image = Constants.Image.profileimage
         view.contentMode = .scaleAspectFill
         return view
     }()
@@ -45,7 +46,7 @@ class ProfileVC: UIViewController {
     }()
     private lazy var userNameProfile: UILabel = {
         let view = UILabel()
-        view.text = "Cherepanin Ilia"
+        view.text = "Satria Adhi Pradana"
         view.textAlignment = .center
         view.font = Constants.Font.profileName15
         return view
@@ -81,6 +82,13 @@ class ProfileVC: UIViewController {
         return view
     }()
     
+    private lazy var navLabel: UILabel = {
+        let view = UILabel()
+        view.text = "Profile"
+        view.font = Constants.Font.navigationTitle
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -90,6 +98,7 @@ class ProfileVC: UIViewController {
     private func setupViews(){
         tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.identifier)
         tableView.dataSource = self
+        tableView.delegate = self
         
         view.backgroundColor = Constants.Color.background_white
         view.addSubview(imageUserView)
@@ -97,13 +106,15 @@ class ProfileVC: UIViewController {
         view.addSubview(userNameProfile)
         view.addSubview(uploadButton)
         view.addSubview(tableView)
+        
+        navigationItem.titleView = navLabel
     }
     private func makeConstraints(){
         imageUserView.snp.makeConstraints { make in
             make.width.equalTo(61)
             make.height.equalTo(61)
             make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(52)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(25)
         }
         changeButton.snp.makeConstraints { make in
             make.width.equalTo(100)
@@ -141,6 +152,16 @@ extension ProfileVC: UITableViewDataSource {
         let item = viewModel.cells[indexPath.row]
         cell?.setupCell(item: item)
         return cell ?? UITableViewCell()
+    }
+}
+
+extension ProfileVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let item = viewModel.cells[indexPath.row]
+        if item.type == .logout {
+            viewModel.openSignin()
+        }
     }
 }
 

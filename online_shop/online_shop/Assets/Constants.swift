@@ -207,9 +207,15 @@ enum Constants {
         static var vector: UIImage? {
             UIImage(named: "vector")
         }
+        static var tabbar_background: UIImage? {
+            UIImage(named: "tabbar_background")
+        }
         
         static var lens: UIImage? {
             UIImage(named: "lens")
+        }
+        static var hidden: UIImage? {
+            UIImage(named: "hidden")
         }
     }
 }

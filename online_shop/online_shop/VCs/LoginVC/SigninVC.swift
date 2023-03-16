@@ -12,6 +12,7 @@ import SnapKit
 class SigninVC: UIViewController {
     
     private let viewModel: SigninViewModel
+    private var user: UserModel? = nil
     
     init(viewModel: SigninViewModel){
         self.viewModel = viewModel
@@ -65,6 +66,28 @@ class SigninVC: UIViewController {
         return view
     }()
     
+    private lazy var errorEmail: UILabel = {
+        let view = UILabel()
+        view.textAlignment = .center
+        view.font = Constants.Font.signinTextField11
+        view.textColor = Constants.Color.red
+        return view
+    }()
+    private lazy var errorName: UILabel = {
+        let view = UILabel()
+        view.textAlignment = .center
+        view.font = Constants.Font.signinTextField11
+        view.textColor = Constants.Color.red
+        return view
+    }()
+    private lazy var errorLastName: UILabel = {
+        let view = UILabel()
+        view.textAlignment = .center
+        view.font = Constants.Font.signinTextField11
+        view.textColor = Constants.Color.red
+        return view
+    }()
+    
     private lazy var signinButton : UIButton = {
         let view = UIButton()
         var config = UIButton.Configuration.filled()
@@ -79,6 +102,7 @@ class SigninVC: UIViewController {
         config.background.cornerRadius = 15
         config.cornerStyle = .fixed
         view.configuration = config
+        view.isEnabled = false
         view.addTarget(self, action: #selector(signinTouched), for: .touchUpInside)
 
         return view
@@ -138,6 +162,8 @@ class SigninVC: UIViewController {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
+        
+        user = UDUser.loadUser()
     }
     private func setupViews(){
         view.backgroundColor = Constants.Color.background_white
@@ -150,6 +176,13 @@ class SigninVC: UIViewController {
         view.addSubview(loginButton)
         view.addSubview(googleButton)
         view.addSubview(appleButton)
+        view.addSubview(errorEmail)
+        view.addSubview(errorName)
+        view.addSubview(errorLastName)
+        
+        emailTextField.delegate = self
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
     }
     private func makeConstraints(){
         titleLabel.snp.makeConstraints { make in
@@ -206,12 +239,107 @@ class SigninVC: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(googleButton.snp.bottom).offset(30)
         }
+        errorEmail.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(1)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(150)
+            make.height.equalTo(25)
+        }
+        errorName.snp.makeConstraints { make in
+            make.width.equalTo(150)
+            make.height.equalTo(25)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(firstNameTextField.snp.bottom).offset(1)
+        }
+        errorLastName.snp.makeConstraints { make in
+            make.width.equalTo(150)
+            make.height.equalTo(25)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(lastNameTextField.snp.bottom).offset(1)
+        }
+        
     }
     
+    private func validateEmail(string: String) -> String?{
+        let emailSymb = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", emailSymb)
+        if !predicate.evaluate(with: string){
+            return "Envalid Email Address"
+        }
+        if user?.email == string {
+            return "Email already is taken"
+        }
+        return nil
+    }
+    private func validateNames(name: String, last_name: String) -> String?{
+        
+        if user?.name == name && user?.last_name == last_name {
+            return "User already exists"
+        }
+        return nil
+    }
+    
+    private func validatePassed(){
+        if (errorEmail.isHidden && errorName.isHidden && errorLastName.isHidden) && (emailTextField.text != "" && firstNameTextField.text != "" && lastNameTextField.text != ""){
+            signinButton.isEnabled = true
+        } else {
+            signinButton.isEnabled = false
+        }
+    }
     @objc private func signinTouched(){
-        viewModel.openLogin()
+        viewModel.openTabbar()
+        if let name = firstNameTextField.text, let last_name = lastNameTextField.text, let email = emailTextField.text {
+            UDUser.saveUser(name: name, last_name: last_name, email: email)
+        }
     }
     @objc private func loginTouched(){
         viewModel.openLogin()
     }
 }
+
+extension SigninVC: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let name = firstNameTextField.text, let lastName = lastNameTextField.text {
+            if let validate = validateNames(name: name, last_name: lastName) {
+                errorName.text = validate
+                errorLastName.text = validate
+                errorName.isHidden = false
+                errorLastName.isHidden = false
+            } else {
+                errorName.isHidden = true
+                errorLastName.isHidden = true
+            }
+        }
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if let name = firstNameTextField.text, let lastName = lastNameTextField.text {
+            if name == "" || lastName == "" {
+                errorName.isHidden = true
+                errorLastName.isHidden = true
+            }
+            if let validate = validateNames(name: name, last_name: lastName) {
+                errorName.text = validate
+                errorLastName.text = validate
+                errorName.isHidden = false
+                errorLastName.isHidden = false
+            } else {
+                errorName.isHidden = true
+                errorLastName.isHidden = true
+            }
+        }
+        if let email = emailTextField.text {
+                if email == "" {
+                    return
+                }
+                   if let validate = validateEmail(string: email) {
+                       errorEmail.text = validate
+                       errorEmail.isHidden = false
+                   } else {
+                       errorEmail.isHidden = true
+                }
+        }
+        validatePassed()
+    }
+}
+

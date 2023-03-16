@@ -12,6 +12,7 @@ import SnapKit
 class LoginVC: UIViewController {
     
     private let viewModel: LoginViewModel
+    private var user: UserModel?
     
     init(viewModel: LoginViewModel){
         self.viewModel = viewModel
@@ -37,6 +38,8 @@ class LoginVC: UIViewController {
         view.placeholder = "First name"
         view.textAlignment = .center
         view.layer.cornerRadius = 15
+        view.rightView = hiddeView
+        view.rightViewMode = .always
         return view
     }()
     private lazy var passwordTextField: UITextField = {
@@ -46,6 +49,22 @@ class LoginVC: UIViewController {
         view.placeholder = "Password"
         view.textAlignment = .center
         view.layer.cornerRadius = 15
+        view.isSecureTextEntry = true
+        view.rightView = hiddenButton
+        view.rightViewMode = .always
+        return view
+    }()
+    private lazy var hiddeView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 24))
+        return view
+    }()
+    private lazy var hiddenButton: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 24))
+        let button = UIButton()
+        button.frame = CGRect(x: -10, y: 0, width: 20, height: 24)
+        button.setImage(Constants.Image.hidden, for: .normal)
+        button.addTarget(self, action: #selector(hiddenTouched), for: .touchUpInside)
+        view.addSubview(button)
         return view
     }()
     private lazy var loginButton : UIButton = {
@@ -67,10 +86,19 @@ class LoginVC: UIViewController {
         return view
     }()
     
+    private lazy var errorValidate: UILabel = {
+        let view = UILabel()
+        view.textAlignment = .center
+        view.font = Constants.Font.signinTextField11
+        view.textColor = Constants.Color.red
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
+        user = UDUser.loadUser()
     }
     
     private func setupViews(){
@@ -79,6 +107,10 @@ class LoginVC: UIViewController {
         view.addSubview(firstNameTextField)
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
+        view.addSubview(errorValidate)
+        
+        firstNameTextField.delegate = self
+        passwordTextField.delegate = self
     }
     private func makeConstraints(){
         titleLabel.snp.makeConstraints { make in
@@ -105,9 +137,40 @@ class LoginVC: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(passwordTextField.snp.bottom).offset(100)
         }
+        errorValidate.snp.makeConstraints { make in
+            make.width.equalTo(200)
+            make.height.equalTo(25)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(passwordTextField.snp.bottom).offset(1)
+        }
     }
     
+    private func validatePass(){
+        errorValidate.text = "Incorrect login or password"
+        errorValidate.isHidden = false
+    }
+    
+    @objc private func hiddenTouched(){
+        if passwordTextField.isSecureTextEntry {
+            passwordTextField.isSecureTextEntry = false
+        } else {
+            passwordTextField.isSecureTextEntry = true
+        }
+    }
     @objc private func loginTouched(){
-        viewModel.makeTabbar()
+        
+        if let name = firstNameTextField.text, let password = passwordTextField.text {
+            if name == user?.name && password == user?.password {
+                viewModel.makeTabbar()
+            } else {
+                validatePass()
+            }
+        }
+    }
+}
+
+extension LoginVC: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        errorValidate.isHidden = true
     }
 }
