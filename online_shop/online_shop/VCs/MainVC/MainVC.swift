@@ -7,11 +7,15 @@
 
 import Foundation
 import UIKit
+import Combine
 import SnapKit
 
 class MainVC: UICollectionViewController {
     
     private let viewModel: MainViewModel
+    private var cancelable: Set<AnyCancellable> = []
+    private var saleContainer = FlashSaleContainer.makePlaceholder()
+    private var latestContainer = LatestContainer.makePlaceholder()
     static let latestHeader = "latest"
     static let flashSale = "flashsale"
     
@@ -65,6 +69,7 @@ class MainVC: UICollectionViewController {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
+        bind()
     }
     
     private func setupViews(){
@@ -94,6 +99,20 @@ class MainVC: UICollectionViewController {
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+    }
+    private func bind(){
+        viewModel.$latestContainer
+            .sink(receiveValue: { container in
+                self.latestContainer = container
+                self.collectionView.reloadData()
+            })
+            .store(in: &cancelable)
+        viewModel.$saleContainer
+            .sink(receiveValue: { container in
+                self.saleContainer = container
+                self.collectionView.reloadData()
+            })
+            .store(in: &cancelable)
     }
     
     static func initFlowLayout() -> UICollectionViewCompositionalLayout {
@@ -142,9 +161,9 @@ class MainVC: UICollectionViewController {
         case 0:
             return viewModel.categories.count
         case 1:
-            return viewModel.latest.count
+            return latestContainer.latest.count
         case 2:
-            return viewModel.flashSale.count
+            return saleContainer.flash_sale.count
         default:
             return 0
         }
@@ -157,14 +176,14 @@ class MainVC: UICollectionViewController {
             cell?.setupCell(image: item.image, title: item.name)
             return cell ?? UICollectionViewCell()
         } else if section == 1 {
-            let item = viewModel.latest[indexPath.row]
+            let item = latestContainer.latest[indexPath.row]
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCellLatest.identifier, for: indexPath) as? CollectionViewCellLatest
-            cell?.setupCell(title: item.title, price: item.price, category: item.category, image: item.image)
+            cell?.setupCell(title: item.name, price: item.price, category: item.category, image: Constants.Image.profileimage!)
             return cell ?? UICollectionViewCell()
         } else {
-            let item = viewModel.flashSale[indexPath.row]
+            let item = saleContainer.flash_sale[indexPath.row]
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCellFlashSale.identifier, for: indexPath) as? CollectionViewCellFlashSale
-            cell?.setupCell(title: item.title, price: item.price, priceOff: item.priceOff, category: item.category, brand: item.brand, image: item.image)
+            cell?.setupCell(title: item.name, price: item.price, priceOff: String(item.discount), category: item.category, image: Constants.Image.profileimage!)
             return cell ?? UICollectionViewCell()
         }
     }

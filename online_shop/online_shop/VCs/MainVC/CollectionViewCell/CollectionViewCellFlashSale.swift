@@ -122,13 +122,13 @@ class CollectionViewCellFlashSale: UICollectionViewCell {
         }
         titleLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().inset(34)
+            make.bottom.equalToSuperview().inset(30)
             make.width.equalTo(87)
             make.height.equalTo(65)
         }
         categoryLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().inset(92)
+            make.left.equalToSuperview().offset(8)
+            make.bottom.equalToSuperview().inset(85)
             make.width.equalTo(50)
             make.height.equalTo(17)
         }
@@ -146,12 +146,12 @@ class CollectionViewCellFlashSale: UICollectionViewCell {
         }
     }
     
-    func setupCell(title: String, price: String, priceOff: String, category: String, brand: UIImage, image: UIImage){
+    func setupCell(title: String, price: Double, priceOff: String, category: String, image: UIImage){
         titleLabel.text = title
-        priceLabel.text = "$ " + price
+        priceLabel.text = "$ " + String(price)
         priceOffLabel.text = priceOff + "% off"
         categoryLabel.text = category
-        brandImage.image = brand
+        brandImage.image = Constants.Image.brand
         imageView.image = image
     }
 }

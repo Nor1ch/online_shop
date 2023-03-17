@@ -16,11 +16,12 @@ class CollectionViewCellLatest: UICollectionViewCell {
         let view = UIImageView()
         view.clipsToBounds = true
         view.layer.cornerRadius = 10
+        view.backgroundColor = Constants.Color.black
+        view.contentMode = .scaleAspectFill
         return view
     }()
     private lazy var titleLabel: UILabel = {
         let view = UILabel()
-        view.text = "TESTOVOE"
         view.font = Constants.Font.latestTitle9
         view.textColor = Constants.Color.white
         view.textAlignment = .left
@@ -30,7 +31,6 @@ class CollectionViewCellLatest: UICollectionViewCell {
     }()
     private lazy var categoryLabel: UILabel = {
         let view = UILabel()
-        view.text = "TESTOVOE"
         view.backgroundColor = Constants.Color.gray_category?.withAlphaComponent(0.85)
         view.textAlignment = .center
         view.font = Constants.Font.latestCategory6
@@ -41,7 +41,6 @@ class CollectionViewCellLatest: UICollectionViewCell {
     }()
     private lazy var priceLabel: UILabel = {
         let view = UILabel()
-        view.text = "TESTOVOE"
         view.font = Constants.Font.latestPrice7
         view.textColor = Constants.Color.white
         return view
@@ -77,20 +76,22 @@ class CollectionViewCellLatest: UICollectionViewCell {
             make.edges.equalToSuperview()
         }
         priceLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(10)
-            make.left.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().inset(5)
+            make.left.equalToSuperview().offset(7)
             make.height.equalTo(10)
             make.width.equalTo(40)
         }
         titleLabel.snp.makeConstraints { make in
-            make.height.equalTo(26)
-            make.width.equalTo(90)
-            make.left.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().inset(22)
+            make.height.lessThanOrEqualTo(32)
+            make.width.lessThanOrEqualTo(90)
+            make.left.equalToSuperview().offset(7)
+            make.right.equalTo(addButton.snp.left)
+//            make.bottom.greaterThanOrEqualTo(priceLabel.snp.top)
+            make.top.equalTo(categoryLabel.snp.bottom).offset(3)
         }
         categoryLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().inset(50)
+            make.left.equalToSuperview().offset(5)
+            make.bottom.equalToSuperview().inset(45)
             make.width.equalTo(35)
             make.height.equalTo(12)
         }
@@ -102,9 +103,9 @@ class CollectionViewCellLatest: UICollectionViewCell {
         }
     }
     
-    func setupCell(title: String, price: String, category: String, image: UIImage){
+    func setupCell(title: String, price: Double, category: String, image: UIImage){
         titleLabel.text = title
-        priceLabel.text = "$ " + price
+        priceLabel.text = "$ " + String(price)
         categoryLabel.text = category
         imageView.image = image
     }

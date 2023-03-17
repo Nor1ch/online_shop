@@ -60,6 +60,7 @@
 		05C1F0A329C2157E00B26348 /* ProfileRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0A229C2157E00B26348 /* ProfileRoute.swift */; };
 		05C1F0A529C2EE7600B26348 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0A429C2EE7600B26348 /* UserModel.swift */; };
 		05C1F0A829C31E8200B26348 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0A729C31E8200B26348 /* TabbarVC.swift */; };
+		05C1F0AC29C453E400B26348 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0AB29C453E400B26348 /* APICall.swift */; };
 		CD6ED9213477479ECFCD98EF /* Pods_online_shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DBDD89BC21B802CF8704A7 /* Pods_online_shop.framework */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		05C1F0A229C2157E00B26348 /* ProfileRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRoute.swift; sourceTree = "<group>"; };
 		05C1F0A429C2EE7600B26348 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		05C1F0A729C31E8200B26348 /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
+		05C1F0AB29C453E400B26348 /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		A7C068DD135ABDC91041A20C /* Pods-online_shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-online_shop.debug.xcconfig"; path = "Target Support Files/Pods-online_shop/Pods-online_shop.debug.xcconfig"; sourceTree = "<group>"; };
 		EEAB9516A2E30590700174CF /* Pods-online_shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-online_shop.release.xcconfig"; path = "Target Support Files/Pods-online_shop/Pods-online_shop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +159,7 @@
 		05C1F02029BF488500B26348 /* online_shop */ = {
 			isa = PBXGroup;
 			children = (
+				05C1F0AA29C453D400B26348 /* API */,
 				05C1F06D29C08EB800B26348 /* Models */,
 				05C1F03C29BF4A1500B26348 /* Router */,
 				05C1F03729BF49B900B26348 /* Assets */,
@@ -335,6 +338,14 @@
 			path = TabbarVC;
 			sourceTree = "<group>";
 		};
+		05C1F0AA29C453D400B26348 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				05C1F0AB29C453E400B26348 /* APICall.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		3BBADA57BDCB762A0EA8CA8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,6 +499,7 @@
 				05C1F09F29C214D000B26348 /* MessageViewModel.swift in Sources */,
 				05C1F08929C1F48A00B26348 /* SigninRoute.swift in Sources */,
 				05C1F02629BF488500B26348 /* ViewController.swift in Sources */,
+				05C1F0AC29C453E400B26348 /* APICall.swift in Sources */,
 				05C1F02229BF488500B26348 /* AppDelegate.swift in Sources */,
 				05C1F08529C1ECE800B26348 /* ProfileTableViewCell.swift in Sources */,
 				05C1F07529C0B77B00B26348 /* FlashSaleModel.swift in Sources */,
