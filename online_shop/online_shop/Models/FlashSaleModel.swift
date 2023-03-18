@@ -33,3 +33,11 @@ struct FlashSaleContainer: Decodable {
         return FlashSaleContainer(flash_sale: [])
     }
 }
+
+struct SaleCompl {
+    let category: String
+    let name: String
+    let price: Double
+    let discount: Int
+    let image: UIImage
+}

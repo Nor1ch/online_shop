@@ -30,3 +30,10 @@ struct LatestContainer: Decodable{
         return LatestContainer(latest: [])
     }
 }
+
+struct LatestCompl {
+    let category: String
+    let name: String
+    let price: Double
+    let image: UIImage
+}
