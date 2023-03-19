@@ -12,7 +12,9 @@ import SnapKit
 
 class MainVC: UICollectionViewController {
     
+    
     private let viewModel: MainViewModel
+    private var user: UserModel?
     private var cancelable: Set<AnyCancellable> = []
     private var latestCompl: [LatestCompl] = []
     private var saleCompl: [SaleCompl] = []
@@ -55,9 +57,41 @@ class MainVC: UICollectionViewController {
         return view
     }()
     
+    private lazy var rightBarButton: UIBarButtonItem = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width:  55, height: 30))
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        button.setImage(user?.image ?? Constants.Image.profileimage, for: .normal)
+        button.backgroundColor = .red
+        button.addTarget(self, action: #selector(profileTapped), for: .touchUpInside)
+        button.layer.cornerRadius = 15
+        button.clipsToBounds = true
+        view.addSubview(button)
+        let navButton = UIBarButtonItem(customView: view)
+        return navButton
+    }()
+    
+    private lazy var locationButton: UIButton = {
+        let view = UIButton()
+        var config = UIButton.Configuration.plain()
+        let attr : [NSAttributedString.Key: Any] = [
+            .font : Constants.Font.location10 as Any,
+            .foregroundColor : Constants.Color.gray as Any
+        ]
+        let title = "Location"
+        config.titleAlignment = .center
+        config.attributedTitle = AttributedString(title, attributes: AttributeContainer(attr))
+        config.image = Constants.Image.vector_down
+        config.imagePlacement = .trailing
+        config.imagePadding = 5
+        config.imageColorTransformer = .grayscale
+        view.configuration = config
+        view.addTarget(self, action: #selector(locationTapped), for: .touchUpInside)
+        return view
+    }()
+    
     init(viewModel: MainViewModel){
         self.viewModel = viewModel
-        
+        self.user = UDUser.loadUser()
         super.init(collectionViewLayout: MainVC.initFlowLayout() )
     }
     
@@ -82,10 +116,14 @@ class MainVC: UICollectionViewController {
         
         collectionView.backgroundColor = Constants.Color.background_white
         collectionView.dataSource = self
+        collectionView.delegate = self
         
         navigationItem.titleView = navLabel
+        navigationItem.rightBarButtonItem = rightBarButton
         view.addSubview(searchBar)
+        view.addSubview(locationButton)
     }
+    
     private func makeConstraints(){
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
@@ -98,6 +136,12 @@ class MainVC: UICollectionViewController {
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
+        }
+        locationButton.snp.makeConstraints { make in
+            make.height.equalTo(15)
+            make.width.equalTo(80)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.right.equalToSuperview().inset(10)
         }
     }
     private func bind(){
@@ -114,7 +158,7 @@ class MainVC: UICollectionViewController {
             })
             .store(in: &cancelable)
     }
-    
+//MARK: - init FlowLayout
     static func initFlowLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
             if sectionNumber == 0 {
@@ -153,6 +197,7 @@ class MainVC: UICollectionViewController {
         }
     }
     
+//MARK: - Collection view data source delegate
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         3
     }
@@ -193,5 +238,28 @@ class MainVC: UICollectionViewController {
         } else {
             return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewCellFlashSaleHeader.identifier, for: indexPath)
         }
+    }
+//MARK: - Collection view delegate
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            print("category")
+        case 1:
+            print("latest")
+            viewModel.openDetails()
+        case 2:
+            print("sale")
+            viewModel.openDetails()
+        default:
+            print("wrong")
+        }
+    }
+    
+//MARK: - objc funcs
+    @objc private func profileTapped(){
+        viewModel.openProfile()
+    }
+    @objc private func locationTapped(){
+        print("location")
     }
 }

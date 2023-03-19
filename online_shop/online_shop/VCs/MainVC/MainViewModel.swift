@@ -20,11 +20,12 @@ class MainViewModel {
 
     @Published var latestCompl: [LatestCompl] = []
     @Published var saleCompl: [SaleCompl] = []
-    private let router: MainRouter
-    
     private var cancelable: AnyCancellable? = nil
     
-    init(router: MainRouter){
+    typealias Routes = ProfileRoute & DetailsRoute
+    private let router: Routes
+    
+    init(router: Routes){
         self.router = router
         
         cancelable = publisherMerge()
@@ -32,5 +33,12 @@ class MainViewModel {
                 self.latestCompl = first
                 self.saleCompl = second
             })
+    }
+    
+    func openProfile(){
+        router.openProfile()
+    }
+    func openDetails(){
+        router.openDetails()
     }
 }

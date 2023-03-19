@@ -114,6 +114,9 @@ enum Constants {
             UIFont(name: "Montserrat-Medium", size: 8)
         }
         
+        static var location10: UIFont? {
+            UIFont(name: "Poppins-Regular", size: 10)
+        }
     }
     enum Image {
         static var cars: UIImage? {
@@ -216,6 +219,10 @@ enum Constants {
         }
         static var hidden: UIImage? {
             UIImage(named: "hidden")
+        }
+        
+        static var vector_down: UIImage? {
+            UIImage(named: "vector_down")
         }
     }
 }

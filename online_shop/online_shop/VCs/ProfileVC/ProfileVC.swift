@@ -11,6 +11,7 @@ import SnapKit
 
 class ProfileVC: UIViewController {
     private let viewModel: ProfileViewModel
+    private var user: UserModel? = nil
     
     init(viewModel: ProfileViewModel){
         self.viewModel = viewModel
@@ -108,6 +109,11 @@ class ProfileVC: UIViewController {
         view.addSubview(tableView)
         
         navigationItem.titleView = navLabel
+        user = UDUser.loadUser()
+        if let user = user {
+            imageUserView.image = user.image ?? Constants.Image.profileimage
+            userNameProfile.text = user.name + " " +  user.last_name
+        }
     }
     private func makeConstraints(){
         imageUserView.snp.makeConstraints { make in
