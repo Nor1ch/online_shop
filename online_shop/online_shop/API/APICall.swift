@@ -15,8 +15,31 @@ func publisherMerge() -> AnyPublisher<([LatestCompl],[SaleCompl]),Never> {
                    publisherSaleCompl())
         .eraseToAnyPublisher()
 }
-
+func publisherDetailsWithImages() -> AnyPublisher<DetailsCompl,Never> {
+    publisherDetails()
+        .flatMap { model in
+            publisherImages(urls: model.image_urls)
+                .map { images in
+                    DetailsCompl(name: model.name, description: model.description, rating: model.rating, number_of_reviews: model.number_of_reviews, price: model.price, colors: model.colors, images: images)
+        }
+    }
+        .eraseToAnyPublisher()
+}
 //MARK: - private publishers
+
+private func publisherDetails() -> AnyPublisher<DetailsModel, Never> {
+    guard let url = urlDetails() else {
+        return Just(DetailsModel.placeholderDetails()).eraseToAnyPublisher()
+    }
+    return URLSession.shared.dataTaskPublisher(for: url)
+        .map { $0.data }
+        .decode(type: DetailsModel.self, decoder: JSONDecoder())
+        .replaceError(with: DetailsModel.placeholderDetails())
+        .receive(on: RunLoop.main)
+        .eraseToAnyPublisher()
+}
+
+
 private func publisherLatestCompl() -> AnyPublisher<[LatestCompl], Never> {
     publisherLatest()
         .map { container in
@@ -59,10 +82,16 @@ private func publisherImage(url: String) -> AnyPublisher<UIImage, Never> {
         .receive(on: RunLoop.main)
         .eraseToAnyPublisher()
 }
+private func publisherImages(urls: [String]) -> AnyPublisher<[UIImage], Never> {
+    Publishers.MergeMany(urls.map{string in
+        publisherImage(url: string)
+    })
+        .collect(urls.count)
+        .eraseToAnyPublisher()
+}
 
 private func publisherLatest() -> AnyPublisher<LatestContainer, Never> {
     guard let url = urlLatest() else {
-        print("url error latest")
         return Just(LatestContainer.makePlaceholder()).eraseToAnyPublisher()
     }
     return URLSession.shared.dataTaskPublisher(for: url)
@@ -75,7 +104,6 @@ private func publisherLatest() -> AnyPublisher<LatestContainer, Never> {
 
 private func publisherSale() -> AnyPublisher<FlashSaleContainer, Never> {
     guard let url = urlSale() else {
-        print("url error sale")
         return Just(FlashSaleContainer.makePlaceholder()).eraseToAnyPublisher()
     }
     return URLSession.shared.dataTaskPublisher(for: url)
@@ -99,4 +127,8 @@ private func urlSale() -> URL? {
 //MARK: - Latest url
 private func urlLatest() -> URL? {
     return URL(string: "https://run.mocky.io/v3/cc0071a1-f06e-48fa-9e90-b1c2a61eaca7")
+}
+//MARK: - details url
+private func urlDetails() -> URL? {
+    return URL(string: "https://run.mocky.io/v3/f7f99d04-4971-45d5-92e0-70333383c239")
 }

@@ -61,7 +61,6 @@ class MainVC: UICollectionViewController {
         let view = UIView(frame: CGRect(x: 0, y: 0, width:  55, height: 30))
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         button.setImage(user?.image ?? Constants.Image.profileimage, for: .normal)
-        button.backgroundColor = .red
         button.addTarget(self, action: #selector(profileTapped), for: .touchUpInside)
         button.layer.cornerRadius = 15
         button.clipsToBounds = true
@@ -242,16 +241,12 @@ class MainVC: UICollectionViewController {
 //MARK: - Collection view delegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 0:
-            print("category")
         case 1:
-            print("latest")
             viewModel.openDetails()
         case 2:
-            print("sale")
             viewModel.openDetails()
         default:
-            print("wrong")
+            print(indexPath.row)
         }
     }
     
@@ -260,6 +255,5 @@ class MainVC: UICollectionViewController {
         viewModel.openProfile()
     }
     @objc private func locationTapped(){
-        print("location")
     }
 }

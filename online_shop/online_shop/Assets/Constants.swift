@@ -43,6 +43,9 @@ enum Constants {
         static var violet_button: UIColor? {
             UIColor(named: "violet_button")
         }
+        static var gray_button: UIColor? {
+            UIColor(named: "gray_button")
+        }
     }
     enum Font {
         static var navigationTitle: UIFont? {
@@ -117,6 +120,32 @@ enum Constants {
         static var location10: UIFont? {
             UIFont(name: "Poppins-Regular", size: 10)
         }
+        
+        static var descriptionTitle17: UIFont? {
+            UIFont(name: "Poppins-SemiBold", size: 17)
+        }
+        static var descriptionPrice13: UIFont? {
+            UIFont(name: "Poppins-SemiBold", size: 13)
+        }
+        static var descriptionText9: UIFont? {
+            UIFont(name: "Poppins-Regular", size: 9)
+        }
+        static var descriptionRaiting9: UIFont? {
+            UIFont(name: "Poppins-SemiBold", size: 9)
+        }
+        static var descriptionViews9: UIFont? {
+            UIFont(name: "Poppins-Regular", size: 9)
+        }
+        static var descriptionHeader10: UIFont? {
+            UIFont(name: "Poppins-SemiBold", size: 10)
+        }
+        static var descriptionQuantity9: UIFont? {
+            UIFont(name: "Poppins-Medium", size: 9)
+        }
+        static var descriptionButton8: UIFont? {
+            UIFont(name: "Poppins-SemiBold", size: 8)
+        }
+        
     }
     enum Image {
         static var cars: UIImage? {
@@ -223,6 +252,20 @@ enum Constants {
         
         static var vector_down: UIImage? {
             UIImage(named: "vector_down")
+        }
+        
+        static var favButton: UIImage? {
+            UIImage(named: "favButton")
+        }
+        static var shareButton: UIImage? {
+            UIImage(named: "shareButton")
+        }
+        static var lineButton: UIImage? {
+            UIImage(named: "line")
+        }
+        
+        static var star: UIImage? {
+            UIImage(named: "star")
         }
     }
 }
