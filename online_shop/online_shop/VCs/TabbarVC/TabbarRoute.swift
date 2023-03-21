@@ -21,6 +21,8 @@ extension TabbarRoute where Self: Router {
         tabBar.tabBar.layer.cornerRadius = 20
         tabBar.tabBar.layer.masksToBounds = true
         tabBar.tabBar.backgroundColor = Constants.Color.white
+        tabBar.tabBar.unselectedItemTintColor = Constants.Color.gray
+        tabBar.tabBar.tintColor = Constants.Color.violet
         tabBar.viewControllers = tabs
         router.root = tabBar
         route(to: tabBar, as: transition)

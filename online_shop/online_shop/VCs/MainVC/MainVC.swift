@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Combine
 import SnapKit
+import DropDown
 
 class MainVC: UICollectionViewController {
     
@@ -26,7 +27,7 @@ class MainVC: UICollectionViewController {
         view.backgroundColor = Constants.Color.light_gray
         view.textAlignment = .center
         view.placeholder = "What are you looking for?"
-        view.textColor = Constants.Color.gray_textfield
+        view.textColor = Constants.Color.gray
         view.font = Constants.Font.mainTextField
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
@@ -88,6 +89,14 @@ class MainVC: UICollectionViewController {
         return view
     }()
     
+    private lazy var dropDown: DropDown = {
+        let view = DropDown(anchorView: searchBar)
+        view.bottomOffset = CGPoint(x: 0, y: 30)
+        view.topOffset = CGPoint(x: 0, y: 0)
+        view.direction = .bottom
+        return view
+    }()
+    
     init(viewModel: MainViewModel){
         self.viewModel = viewModel
         self.user = UDUser.loadUser()
@@ -126,6 +135,7 @@ class MainVC: UICollectionViewController {
         navigationController?.navigationBar.tintColor = Constants.Color.black
         view.addSubview(searchBar)
         view.addSubview(locationButton)
+        view.addSubview(dropDown)
     }
     
     private func makeConstraints(){
@@ -148,7 +158,7 @@ class MainVC: UICollectionViewController {
             make.right.equalToSuperview().inset(10)
         }
     }
-    private func bind(){
+    private func bind(){        
         viewModel.$latestCompl
             .sink(receiveValue: { array in
                 self.latestCompl = array
@@ -164,7 +174,12 @@ class MainVC: UICollectionViewController {
         searchBar.textPublisher
             .assign(to: \.searchWord, on: self.viewModel)
             .store(in: &cancelable)
-        
+        viewModel.$searchArray
+            .sink(receiveValue: { array in
+                self.dropDown.dataSource = array
+                self.dropDown.show()
+            })
+            .store(in: &cancelable)
     }
 //MARK: - init FlowLayout
     static func initFlowLayout() -> UICollectionViewCompositionalLayout {

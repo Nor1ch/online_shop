@@ -15,6 +15,11 @@ class DetailsVC: UIViewController {
     private let viewModel: DetailsViewModel
     private var selectedColor = 0
     private var selectedImage = 0
+    private var counter: Double = 0.0 {
+        didSet {
+            priceCounter.text = "$ " + String(counter)
+        }
+    }
     
     
     private var model: DetailsCompl = DetailsCompl.placeholderDetails()
@@ -35,6 +40,7 @@ class DetailsVC: UIViewController {
         config.cornerStyle = .fixed
         config.image = UIImage(systemName: "plus")
         view.configuration = config
+        view.addTarget(self, action: #selector(plusTapped), for: .touchUpInside)
         return view
     }()
     private lazy var minusButton : UIButton = {
@@ -45,6 +51,7 @@ class DetailsVC: UIViewController {
         config.cornerStyle = .fixed
         config.image = UIImage(systemName: "minus")
         view.configuration = config
+        view.addTarget(self, action: #selector(minusTapped), for: .touchUpInside)
         return view
     }()
     private lazy var addButton : UIButton = {
@@ -53,6 +60,7 @@ class DetailsVC: UIViewController {
         config.baseBackgroundColor = Constants.Color.violet_button
         config.background.cornerRadius = 15
         config.cornerStyle = .fixed
+        config.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 0)
         let attr : [NSAttributedString.Key: Any] = [
             .font : Constants.Font.descriptionButton8 as Any,
             .foregroundColor : Constants.Color.white as Any
@@ -69,6 +77,15 @@ class DetailsVC: UIViewController {
         view.textColor = Constants.Color.gray
         return view
     }()
+    private lazy var priceCounter: UILabel = {
+        let view = UILabel()
+        view.font = Constants.Font.descriptionButton8
+        view.textColor = Constants.Color.gray_button
+        view.text = "$ " + String(counter)
+        view.textAlignment = .center
+        return view
+    }()
+    
     init(viewModel: DetailsViewModel){
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -109,6 +126,7 @@ class DetailsVC: UIViewController {
         placeholderToBuy.addSubview(quantityLabel)
         placeholderToBuy.addSubview(minusButton)
         placeholderToBuy.addSubview(addButton)
+        addButton.addSubview(priceCounter)
     }
     private func makeConstraints(){
         mainCollectionView.snp.makeConstraints { make in
@@ -146,6 +164,12 @@ class DetailsVC: UIViewController {
             make.width.equalTo(190)
             make.top.equalToSuperview().offset(30)
             make.right.equalToSuperview().inset(20)
+        }
+        priceCounter.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview()
+            make.width.equalTo(70)
         }
     }
     
@@ -199,6 +223,16 @@ class DetailsVC: UIViewController {
         
         return view
     }()
+    
+    @objc private func plusTapped(){
+        counter += model.price
+        
+    }
+    @objc private func minusTapped(){
+        if counter != 0.0 {
+            counter -= model.price
+        }
+    }
 }
 
 //MARK: - data source

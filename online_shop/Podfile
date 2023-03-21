@@ -8,5 +8,6 @@ target 'online_shop' do
   # Pods for online_shop
 pod 'SnapKit', '~> 5.0.0'
 pod 'Alamofire', '~> 5.6.0'
+pod 'DropDown', '~> 2.3.4'
 
 end
