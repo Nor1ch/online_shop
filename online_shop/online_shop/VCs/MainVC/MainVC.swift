@@ -119,6 +119,11 @@ class MainVC: UICollectionViewController {
         
         navigationItem.titleView = navLabel
         navigationItem.rightBarButtonItem = rightBarButton
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constants.Image.menu, style: .plain, target: self, action: #selector(menuTapped))
+        navigationItem.backButtonDisplayMode = .minimal
+        navigationController?.navigationBar.backIndicatorImage = Constants.Image.vector_back
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = Constants.Image.vector_back
+        navigationController?.navigationBar.tintColor = Constants.Color.black
         view.addSubview(searchBar)
         view.addSubview(locationButton)
     }
@@ -156,6 +161,10 @@ class MainVC: UICollectionViewController {
                 self.collectionView.reloadData()
             })
             .store(in: &cancelable)
+        searchBar.textPublisher
+            .assign(to: \.searchWord, on: self.viewModel)
+            .store(in: &cancelable)
+        
     }
 //MARK: - init FlowLayout
     static func initFlowLayout() -> UICollectionViewCompositionalLayout {
@@ -255,5 +264,7 @@ class MainVC: UICollectionViewController {
         viewModel.openProfile()
     }
     @objc private func locationTapped(){
+    }
+    @objc private func menuTapped(){
     }
 }

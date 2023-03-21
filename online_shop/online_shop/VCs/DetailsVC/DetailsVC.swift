@@ -13,7 +13,7 @@ import Combine
 class DetailsVC: UIViewController {
     static let headerColors = "Colors"
     private let viewModel: DetailsViewModel
-    private var selectedColor: Int?
+    private var selectedColor = 0
     private var selectedImage = 0
     
     

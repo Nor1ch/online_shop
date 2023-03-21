@@ -17,10 +17,17 @@ class MainViewModel {
         CategoryModel(image: Constants.Image.furniture!, name: "Furniture"),
         CategoryModel(image: Constants.Image.kids!, name: "Kids")
     ]
-
+    
+    @Published var searchWord: String = ""
+    @Published var searchArray: [String] = [] {
+        didSet {
+            print(searchArray.count)
+        }
+    }
     @Published var latestCompl: [LatestCompl] = []
     @Published var saleCompl: [SaleCompl] = []
     private var cancelable: AnyCancellable? = nil
+    private var cancelableText: AnyCancellable? = nil
     
     typealias Routes = ProfileRoute & DetailsRoute
     private let router: Routes
@@ -33,6 +40,14 @@ class MainViewModel {
                 self.latestCompl = first
                 self.saleCompl = second
             })
+        cancelableText = $searchWord
+            .debounce(for: 1, scheduler: RunLoop.main)
+            .removeDuplicates()
+            .flatMap {publisherWords(word: $0)}
+            .map({ model -> [String] in
+                return model.words
+            })
+            .assign(to: \.searchArray, on: self)
     }
     
     func openProfile(){

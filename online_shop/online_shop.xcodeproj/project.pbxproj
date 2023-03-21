@@ -71,6 +71,8 @@
 		05C1F0BE29C849E300B26348 /* CollectionViewCellColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0BD29C849E300B26348 /* CollectionViewCellColors.swift */; };
 		05C1F0C029C84F9D00B26348 /* CollectionViewHeaderColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0BF29C84F9D00B26348 /* CollectionViewHeaderColors.swift */; };
 		05C1F0C329C8882100B26348 /* UIColor+extension+hexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0C229C8882100B26348 /* UIColor+extension+hexColor.swift */; };
+		05C1F0C529C9727D00B26348 /* UITextField+extension+publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0C429C9727C00B26348 /* UITextField+extension+publisher.swift */; };
+		05C1F0C729C973A300B26348 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0C629C973A300B26348 /* SearchModel.swift */; };
 		CD6ED9213477479ECFCD98EF /* Pods_online_shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DBDD89BC21B802CF8704A7 /* Pods_online_shop.framework */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +144,8 @@
 		05C1F0BD29C849E300B26348 /* CollectionViewCellColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellColors.swift; sourceTree = "<group>"; };
 		05C1F0BF29C84F9D00B26348 /* CollectionViewHeaderColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHeaderColors.swift; sourceTree = "<group>"; };
 		05C1F0C229C8882100B26348 /* UIColor+extension+hexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension+hexColor.swift"; sourceTree = "<group>"; };
+		05C1F0C429C9727C00B26348 /* UITextField+extension+publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+extension+publisher.swift"; sourceTree = "<group>"; };
+		05C1F0C629C973A300B26348 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		A7C068DD135ABDC91041A20C /* Pods-online_shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-online_shop.debug.xcconfig"; path = "Target Support Files/Pods-online_shop/Pods-online_shop.debug.xcconfig"; sourceTree = "<group>"; };
 		EEAB9516A2E30590700174CF /* Pods-online_shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-online_shop.release.xcconfig"; path = "Target Support Files/Pods-online_shop/Pods-online_shop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -335,6 +339,7 @@
 				05C1F07429C0B77B00B26348 /* FlashSaleModel.swift */,
 				05C1F0A429C2EE7600B26348 /* UserModel.swift */,
 				05C1F0B929C83B6700B26348 /* DetailsModel.swift */,
+				05C1F0C629C973A300B26348 /* SearchModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				05C1F0C229C8882100B26348 /* UIColor+extension+hexColor.swift */,
+				05C1F0C429C9727C00B26348 /* UITextField+extension+publisher.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -550,6 +556,7 @@
 				05C1F04C29BF4C4300B26348 /* EmptyTransition.swift in Sources */,
 				05C1F04E29BF4C4E00B26348 /* ModalTransition.swift in Sources */,
 				05C1F09529C211DA00B26348 /* FavoriteRoute.swift in Sources */,
+				05C1F0C729C973A300B26348 /* SearchModel.swift in Sources */,
 				05C1F0A129C214DE00B26348 /* MessageRoute.swift in Sources */,
 				05C1F0B829C831B300B26348 /* CollectioViewCellBottom.swift in Sources */,
 				05C1F06529BF665900B26348 /* CollectionViewCellLatestHeader.swift in Sources */,
@@ -557,6 +564,7 @@
 				05C1F08929C1F48A00B26348 /* SigninRoute.swift in Sources */,
 				05C1F02629BF488500B26348 /* ViewController.swift in Sources */,
 				05C1F0AC29C453E400B26348 /* APICall.swift in Sources */,
+				05C1F0C529C9727D00B26348 /* UITextField+extension+publisher.swift in Sources */,
 				05C1F02229BF488500B26348 /* AppDelegate.swift in Sources */,
 				05C1F0B329C7303700B26348 /* DetailsRoute.swift in Sources */,
 				05C1F08529C1ECE800B26348 /* ProfileTableViewCell.swift in Sources */,

@@ -25,6 +25,18 @@ func publisherDetailsWithImages() -> AnyPublisher<DetailsCompl,Never> {
     }
         .eraseToAnyPublisher()
 }
+
+func publisherWords(word: String) -> AnyPublisher<SearchModel, Never> {
+    guard let url = urlSearch() else {
+        return Just(SearchModel(words: [])).eraseToAnyPublisher()
+    }
+    return URLSession.shared.dataTaskPublisher(for: url)
+        .map {$0.data}
+        .decode(type: SearchModel.self, decoder: JSONDecoder())
+        .replaceError(with: SearchModel(words: []))
+        .receive(on: RunLoop.main)
+        .eraseToAnyPublisher()
+}
 //MARK: - private publishers
 
 private func publisherDetails() -> AnyPublisher<DetailsModel, Never> {
@@ -131,4 +143,8 @@ private func urlLatest() -> URL? {
 //MARK: - details url
 private func urlDetails() -> URL? {
     return URL(string: "https://run.mocky.io/v3/f7f99d04-4971-45d5-92e0-70333383c239")
+}
+//MARK: - search url
+private func urlSearch() -> URL? {
+    return URL(string: "https://run.mocky.io/v3/4c9cd822-9479-4509-803d-63197e5a9e19")
 }
