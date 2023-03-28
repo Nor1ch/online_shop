@@ -21,6 +21,7 @@ class MainVC: UICollectionViewController {
     private var saleCompl: [SaleCompl] = []
     static let latestHeader = "latest"
     static let flashSale = "flashsale"
+    static let brandsHeader = "brands"
     
     private lazy var searchBar: UITextField = {
         let view = UITextField()
@@ -119,12 +120,18 @@ class MainVC: UICollectionViewController {
         collectionView.register(CollectionViewCellLatest.self, forCellWithReuseIdentifier: CollectionViewCellLatest.identifier)
         collectionView.register(CollectionViewCellFlashSale.self, forCellWithReuseIdentifier: CollectionViewCellFlashSale.identifier)
         collectionView.register(CollectionViewCellCategories.self, forCellWithReuseIdentifier: CollectionViewCellCategories.identifier)
+        collectionView.register(CollectionViewCellBrands.self, forCellWithReuseIdentifier: CollectionViewCellBrands.identifier)
+        
+        
         collectionView.register(CollectionViewCellLatestHeader.self, forSupplementaryViewOfKind: MainVC.latestHeader, withReuseIdentifier: CollectionViewCellLatestHeader.identifier)
         collectionView.register(CollectionViewCellFlashSaleHeader.self, forSupplementaryViewOfKind: MainVC.flashSale, withReuseIdentifier: CollectionViewCellFlashSaleHeader.identifier)
+        collectionView.register(CollectionViewCellBrandsHeader.self, forSupplementaryViewOfKind: MainVC.brandsHeader, withReuseIdentifier: CollectionViewCellBrandsHeader.identifier)
         
         collectionView.backgroundColor = Constants.Color.background_white
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        searchBar.delegate = self
         
         navigationItem.titleView = navLabel
         navigationItem.rightBarButtonItem = rightBarButton
@@ -205,7 +212,7 @@ class MainVC: UICollectionViewController {
                 section.boundarySupplementaryItems = [NSCollectionLayoutBoundarySupplementaryItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), elementKind: MainVC.latestHeader, alignment: .topLeading)]
                 section.contentInsets.leading = 15
                 return section
-            } else {
+            } else if sectionNumber == 2 {
                 let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize.init(widthDimension: .absolute(190), heightDimension: .absolute(221)))
                 item.contentInsets.trailing = 15
 
@@ -216,13 +223,24 @@ class MainVC: UICollectionViewController {
                 section.boundarySupplementaryItems = [NSCollectionLayoutBoundarySupplementaryItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), elementKind: MainVC.flashSale, alignment: .topLeading)]
                 section.contentInsets.leading = 15
                 return section
+            } else {
+                let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize.init(widthDimension: .absolute(125), heightDimension: .absolute(149)))
+                item.contentInsets.trailing = 15
+
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize.init(widthDimension: .estimated(3000), heightDimension: .absolute(149)), subitems: [item])
+                
+                let section = NSCollectionLayoutSection(group: group)
+                section.orthogonalScrollingBehavior = .continuous
+                section.boundarySupplementaryItems = [NSCollectionLayoutBoundarySupplementaryItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), elementKind: MainVC.brandsHeader, alignment: .topLeading)]
+                section.contentInsets.leading = 15
+                return section
             }
         }
     }
     
 //MARK: - Collection view data source delegate
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        3
+        4
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section{
@@ -233,7 +251,7 @@ class MainVC: UICollectionViewController {
         case 2:
             return saleCompl.count
         default:
-            return 0
+            return 4
         }
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -248,19 +266,34 @@ class MainVC: UICollectionViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCellLatest.identifier, for: indexPath) as? CollectionViewCellLatest
             cell?.setupCell(title: item.name, price: item.price, category: item.category, image: item.image)
             return cell ?? UICollectionViewCell()
-        } else {
+        } else if section == 2 {
             let item = saleCompl[indexPath.row]
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCellFlashSale.identifier, for: indexPath) as? CollectionViewCellFlashSale
             cell?.setupCell(title: item.name, price: item.price, priceOff: String(item.discount), category: item.category, image: item.image)
             return cell ?? UICollectionViewCell()
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCellBrands.identifier, for: indexPath) as? CollectionViewCellBrands
+            return cell ?? UICollectionViewCell()
         }
     }
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == MainVC.latestHeader {
+        switch kind {
+        case MainVC.latestHeader:
             return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewCellLatestHeader.identifier, for: indexPath)
-        } else {
+        case MainVC.flashSale:
             return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewCellFlashSaleHeader.identifier, for: indexPath)
+        case MainVC.brandsHeader:
+            return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewCellBrandsHeader.identifier, for: indexPath)
+        default:
+            return UICollectionReusableView()
         }
+//        if kind == MainVC.latestHeader {
+//            return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewCellLatestHeader.identifier, for: indexPath)
+//        } else if kind == MainVC.flashSale {
+//            return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewCellFlashSaleHeader.identifier, for: indexPath)
+//        } else {
+//            return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewCellBrandsHeader.identifier, for: indexPath)
+//        }
     }
 //MARK: - Collection view delegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -281,5 +314,11 @@ class MainVC: UICollectionViewController {
     @objc private func locationTapped(){
     }
     @objc private func menuTapped(){
+    }
+}
+
+extension MainVC: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }

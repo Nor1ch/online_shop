@@ -73,6 +73,8 @@
 		05C1F0C329C8882100B26348 /* UIColor+extension+hexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0C229C8882100B26348 /* UIColor+extension+hexColor.swift */; };
 		05C1F0C529C9727D00B26348 /* UITextField+extension+publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0C429C9727C00B26348 /* UITextField+extension+publisher.swift */; };
 		05C1F0C729C973A300B26348 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0C629C973A300B26348 /* SearchModel.swift */; };
+		05C1F0CB29D3462D00B26348 /* CollectionViewCellBrands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0CA29D3462D00B26348 /* CollectionViewCellBrands.swift */; };
+		05C1F0CD29D3463E00B26348 /* CollectionViewCellBrandsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0CC29D3463E00B26348 /* CollectionViewCellBrandsHeader.swift */; };
 		CD6ED9213477479ECFCD98EF /* Pods_online_shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DBDD89BC21B802CF8704A7 /* Pods_online_shop.framework */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +148,8 @@
 		05C1F0C229C8882100B26348 /* UIColor+extension+hexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension+hexColor.swift"; sourceTree = "<group>"; };
 		05C1F0C429C9727C00B26348 /* UITextField+extension+publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+extension+publisher.swift"; sourceTree = "<group>"; };
 		05C1F0C629C973A300B26348 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		05C1F0CA29D3462D00B26348 /* CollectionViewCellBrands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellBrands.swift; sourceTree = "<group>"; };
+		05C1F0CC29D3463E00B26348 /* CollectionViewCellBrandsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellBrandsHeader.swift; sourceTree = "<group>"; };
 		A7C068DD135ABDC91041A20C /* Pods-online_shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-online_shop.debug.xcconfig"; path = "Target Support Files/Pods-online_shop/Pods-online_shop.debug.xcconfig"; sourceTree = "<group>"; };
 		EEAB9516A2E30590700174CF /* Pods-online_shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-online_shop.release.xcconfig"; path = "Target Support Files/Pods-online_shop/Pods-online_shop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -327,6 +331,8 @@
 				05C1F06729C07D5C00B26348 /* CollectionViewCellFlashSale.swift */,
 				05C1F06929C07D7400B26348 /* CollectionViewFlashSaleHeader.swift */,
 				05C1F06B29C07D9700B26348 /* CollectionViewCellCategories.swift */,
+				05C1F0CA29D3462D00B26348 /* CollectionViewCellBrands.swift */,
+				05C1F0CC29D3463E00B26348 /* CollectionViewCellBrandsHeader.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 				05C1F06529BF665900B26348 /* CollectionViewCellLatestHeader.swift in Sources */,
 				05C1F09F29C214D000B26348 /* MessageViewModel.swift in Sources */,
 				05C1F08929C1F48A00B26348 /* SigninRoute.swift in Sources */,
+				05C1F0CD29D3463E00B26348 /* CollectionViewCellBrandsHeader.swift in Sources */,
 				05C1F02629BF488500B26348 /* ViewController.swift in Sources */,
 				05C1F0AC29C453E400B26348 /* APICall.swift in Sources */,
 				05C1F0C529C9727D00B26348 /* UITextField+extension+publisher.swift in Sources */,
@@ -596,6 +603,7 @@
 				05C1F06329BF663200B26348 /* CollectionViewCellLatest.swift in Sources */,
 				05C1F07A29C0D4BD00B26348 /* SigninVC.swift in Sources */,
 				05C1F05229BF524A00B26348 /* Constants.swift in Sources */,
+				05C1F0CB29D3462D00B26348 /* CollectionViewCellBrands.swift in Sources */,
 				05C1F0B629C823CF00B26348 /* CollectionViewCellTop.swift in Sources */,
 				05C1F06F29C08ECB00B26348 /* CategoryModel.swift in Sources */,
 				05C1F05029BF4C5900B26348 /* PushTransition.swift in Sources */,
