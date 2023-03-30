@@ -15,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         DropDown.startListeningToKeyboard()
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+        UITabBar.appearance().standardAppearance = appearance
         return true
     }
 

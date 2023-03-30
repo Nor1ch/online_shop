@@ -273,5 +273,8 @@ enum Constants {
         static var menu: UIImage? {
             UIImage(named: "menu")
         }
+        static var back_details: UIImage? {
+            UIImage(named: "vector_details")
+        }
     }
 }

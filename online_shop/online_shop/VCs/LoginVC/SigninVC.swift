@@ -289,7 +289,7 @@ class SigninVC: UIViewController {
     @objc private func signinTouched(){
         viewModel.openTabbar()
         if let name = firstNameTextField.text, let last_name = lastNameTextField.text, let email = emailTextField.text {
-            UDUser.saveUser(name: name, last_name: last_name, email: email)
+            UDUser.saveUser(name: name, last_name: last_name, email: email, image: nil)
         }
     }
     @objc private func loginTouched(){

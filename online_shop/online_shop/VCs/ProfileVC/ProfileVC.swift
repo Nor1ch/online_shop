@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import PhotosUI
 
 class ProfileVC: UIViewController {
     private let viewModel: ProfileViewModel
@@ -28,6 +29,7 @@ class ProfileVC: UIViewController {
         view.layer.borderColor = Constants.Color.violet_button?.cgColor
         view.layer.cornerRadius = 30
         view.image = Constants.Image.profileimage
+        view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
         return view
     }()
@@ -42,6 +44,7 @@ class ProfileVC: UIViewController {
         config.titleAlignment = .center
         config.attributedTitle = AttributedString(title, attributes: AttributeContainer(attr))
         view.configuration = config
+        view.addTarget(self, action: #selector(changePhoto), for: .touchUpInside)
 
         return view
     }()
@@ -111,7 +114,7 @@ class ProfileVC: UIViewController {
         navigationItem.titleView = navLabel
         user = UDUser.loadUser()
         if let user = user {
-            imageUserView.image = user.image ?? Constants.Image.profileimage
+            imageUserView.image = UIImage(data: user.image ?? Data()) ?? Constants.Image.profileimage
             userNameProfile.text = user.name + " " +  user.last_name
         }
     }
@@ -147,6 +150,15 @@ class ProfileVC: UIViewController {
             make.bottom.equalToSuperview()
         }
     }
+    
+    @objc private func changePhoto(){
+        var config = PHPickerConfiguration(photoLibrary: .shared())
+        config.filter = .images
+        config.selectionLimit = 1
+        let picker = PHPickerViewController(configuration: config)
+        picker.delegate = self
+        present(picker, animated: true)
+    }
 }
 
 extension ProfileVC: UITableViewDataSource {
@@ -169,5 +181,25 @@ extension ProfileVC: UITableViewDelegate {
             viewModel.openSignin()
         }
     }
+}
+
+extension ProfileVC: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        results.forEach { result in
+            result.itemProvider.loadObject(ofClass: UIImage.self) { result, error in
+                guard let image = result as? UIImage, error == nil else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    UDUser.saveImage(image_data: image.jpegData(compressionQuality: 0) ?? Data())
+                    self.imageUserView.image = image
+                }
+            }
+        }
+    }
+    
+    
 }
 

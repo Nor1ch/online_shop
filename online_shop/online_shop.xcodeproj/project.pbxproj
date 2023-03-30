@@ -60,7 +60,7 @@
 		05C1F0A329C2157E00B26348 /* ProfileRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0A229C2157E00B26348 /* ProfileRoute.swift */; };
 		05C1F0A529C2EE7600B26348 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0A429C2EE7600B26348 /* UserModel.swift */; };
 		05C1F0A829C31E8200B26348 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0A729C31E8200B26348 /* TabbarVC.swift */; };
-		05C1F0AC29C453E400B26348 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0AB29C453E400B26348 /* APICall.swift */; };
+		05C1F0AC29C453E400B26348 /* APIMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0AB29C453E400B26348 /* APIMain.swift */; };
 		05C1F0AF29C7301200B26348 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0AE29C7301100B26348 /* DetailsVC.swift */; };
 		05C1F0B129C7302B00B26348 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0B029C7302B00B26348 /* DetailsViewModel.swift */; };
 		05C1F0B329C7303700B26348 /* DetailsRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0B229C7303700B26348 /* DetailsRoute.swift */; };
@@ -75,6 +75,8 @@
 		05C1F0C729C973A300B26348 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0C629C973A300B26348 /* SearchModel.swift */; };
 		05C1F0CB29D3462D00B26348 /* CollectionViewCellBrands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0CA29D3462D00B26348 /* CollectionViewCellBrands.swift */; };
 		05C1F0CD29D3463E00B26348 /* CollectionViewCellBrandsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0CC29D3463E00B26348 /* CollectionViewCellBrandsHeader.swift */; };
+		05C1F0D129D5916100B26348 /* APISearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0D029D5916100B26348 /* APISearch.swift */; };
+		05C1F0D329D5925500B26348 /* APIDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1F0D229D5925500B26348 /* APIDetails.swift */; };
 		CD6ED9213477479ECFCD98EF /* Pods_online_shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DBDD89BC21B802CF8704A7 /* Pods_online_shop.framework */; };
 /* End PBXBuildFile section */
 
@@ -135,7 +137,7 @@
 		05C1F0A229C2157E00B26348 /* ProfileRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRoute.swift; sourceTree = "<group>"; };
 		05C1F0A429C2EE7600B26348 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		05C1F0A729C31E8200B26348 /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
-		05C1F0AB29C453E400B26348 /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
+		05C1F0AB29C453E400B26348 /* APIMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMain.swift; sourceTree = "<group>"; };
 		05C1F0AE29C7301100B26348 /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		05C1F0B029C7302B00B26348 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		05C1F0B229C7303700B26348 /* DetailsRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRoute.swift; sourceTree = "<group>"; };
@@ -150,6 +152,8 @@
 		05C1F0C629C973A300B26348 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		05C1F0CA29D3462D00B26348 /* CollectionViewCellBrands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellBrands.swift; sourceTree = "<group>"; };
 		05C1F0CC29D3463E00B26348 /* CollectionViewCellBrandsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellBrandsHeader.swift; sourceTree = "<group>"; };
+		05C1F0D029D5916100B26348 /* APISearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISearch.swift; sourceTree = "<group>"; };
+		05C1F0D229D5925500B26348 /* APIDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDetails.swift; sourceTree = "<group>"; };
 		A7C068DD135ABDC91041A20C /* Pods-online_shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-online_shop.debug.xcconfig"; path = "Target Support Files/Pods-online_shop/Pods-online_shop.debug.xcconfig"; sourceTree = "<group>"; };
 		EEAB9516A2E30590700174CF /* Pods-online_shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-online_shop.release.xcconfig"; path = "Target Support Files/Pods-online_shop/Pods-online_shop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -375,7 +379,9 @@
 		05C1F0AA29C453D400B26348 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				05C1F0AB29C453E400B26348 /* APICall.swift */,
+				05C1F0AB29C453E400B26348 /* APIMain.swift */,
+				05C1F0D029D5916100B26348 /* APISearch.swift */,
+				05C1F0D229D5925500B26348 /* APIDetails.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -570,7 +576,7 @@
 				05C1F08929C1F48A00B26348 /* SigninRoute.swift in Sources */,
 				05C1F0CD29D3463E00B26348 /* CollectionViewCellBrandsHeader.swift in Sources */,
 				05C1F02629BF488500B26348 /* ViewController.swift in Sources */,
-				05C1F0AC29C453E400B26348 /* APICall.swift in Sources */,
+				05C1F0AC29C453E400B26348 /* APIMain.swift in Sources */,
 				05C1F0C529C9727D00B26348 /* UITextField+extension+publisher.swift in Sources */,
 				05C1F02229BF488500B26348 /* AppDelegate.swift in Sources */,
 				05C1F0B329C7303700B26348 /* DetailsRoute.swift in Sources */,
@@ -604,7 +610,9 @@
 				05C1F07A29C0D4BD00B26348 /* SigninVC.swift in Sources */,
 				05C1F05229BF524A00B26348 /* Constants.swift in Sources */,
 				05C1F0CB29D3462D00B26348 /* CollectionViewCellBrands.swift in Sources */,
+				05C1F0D129D5916100B26348 /* APISearch.swift in Sources */,
 				05C1F0B629C823CF00B26348 /* CollectionViewCellTop.swift in Sources */,
+				05C1F0D329D5925500B26348 /* APIDetails.swift in Sources */,
 				05C1F06F29C08ECB00B26348 /* CategoryModel.swift in Sources */,
 				05C1F05029BF4C5900B26348 /* PushTransition.swift in Sources */,
 				05C1F0BA29C83B6700B26348 /* DetailsModel.swift in Sources */,

@@ -62,7 +62,7 @@ class MainVC: UICollectionViewController {
     private lazy var rightBarButton: UIBarButtonItem = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width:  55, height: 30))
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        button.setImage(user?.image ?? Constants.Image.profileimage, for: .normal)
+        button.setImage(UIImage(data: user?.image ?? Data()) ?? Constants.Image.profileimage, for: .normal)
         button.addTarget(self, action: #selector(profileTapped), for: .touchUpInside)
         button.layer.cornerRadius = 15
         button.clipsToBounds = true
@@ -299,7 +299,7 @@ class MainVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 1:
-            viewModel.openDetails()
+            print(indexPath.row)
         case 2:
             viewModel.openDetails()
         default:

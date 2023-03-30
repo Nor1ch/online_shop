@@ -32,7 +32,6 @@ class MainViewModel {
     
     init(router: Routes){
         self.router = router
-        
         cancelable = publisherMerge()
             .sink(receiveValue: { (first, second) in
                 self.latestCompl = first

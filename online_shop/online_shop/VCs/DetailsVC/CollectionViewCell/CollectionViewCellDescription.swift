@@ -101,7 +101,7 @@ class CollectionViewCellDescription: UICollectionViewCell {
         }
         priceLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.right.equalToSuperview()
+            make.right.equalToSuperview().inset(20)
             make.height.equalTo(20)
             make.left.equalTo(titleLabel.snp.right)
         }

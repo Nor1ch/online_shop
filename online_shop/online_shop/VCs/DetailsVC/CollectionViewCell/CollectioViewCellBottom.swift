@@ -37,10 +37,10 @@ class CollectionViewCellBottom: UICollectionViewCell {
     }
     private func makeConstraints(){
         imageViewCell.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(2)
-            make.left.equalToSuperview().offset(2)
-            make.bottom.equalToSuperview().inset(2)
-            make.right.equalToSuperview().inset(2)
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.right.equalToSuperview()
         }
     }
     func setupCell(image: UIImage) {
