@@ -287,19 +287,12 @@ class MainVC: UICollectionViewController {
         default:
             return UICollectionReusableView()
         }
-//        if kind == MainVC.latestHeader {
-//            return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewCellLatestHeader.identifier, for: indexPath)
-//        } else if kind == MainVC.flashSale {
-//            return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewCellFlashSaleHeader.identifier, for: indexPath)
-//        } else {
-//            return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionViewCellBrandsHeader.identifier, for: indexPath)
-//        }
     }
 //MARK: - Collection view delegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 1:
-            print(indexPath.row)
+            viewModel.openDetails()
         case 2:
             viewModel.openDetails()
         default:
